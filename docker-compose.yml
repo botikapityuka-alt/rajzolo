@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # BACKEND SZOLGÁLTATÁS
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    command: npm start
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+  # FRONTEND SZOLGÁLTATÁS
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    command: npm run dev -- --host
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    volumes:
+      - ./client:/app
+      - /app/node_modules
