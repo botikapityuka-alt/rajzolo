@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 import './App.css';
 
 // Csatlakozás a backendhez
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://rajzolo.onrender.com");
 
 function App() {
   const canvasRef = useRef(null);
