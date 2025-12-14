@@ -12,7 +12,12 @@ const server = http.createServer(app);
 // Socket.io beállítása (CORS engedélyezése a React kliensnek)
 const io = new Server(server, {
   cors: {
-    origin: "*", // Élesben ide a kliens URL-je kerülne
+    origin:[
+      "https://beamish-crumble-2f42ec.netlify.app/",
+      "https://localhost:5173" 
+      
+    ],// Élesben ide a kliens URL-je kerülne
+    
     methods: ["GET", "POST"]
   }
 });
@@ -30,6 +35,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3001, () => {
-  console.log("SERVER RUNNING ON PORT 3001");
+server.listen(PORT, () => {
+  console.log(`SERVER RUNNING ON PORT ${PORT}`);
 });
